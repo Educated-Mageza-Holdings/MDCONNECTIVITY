@@ -3,2181 +3,1111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MD Health Connexions | Connecting Healthcare Professionals</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0056d3;
-            --primary-light: #4285f4;
-            --primary-dark: #0038a5;
-            --secondary: #1e6fba;
-            --secondary-light: #4a90e2;
-            --accent: #0077cc;
-            --accent-light: #0095ff;
-            --light: #f8fafc;
-            --light-blue: #f0f9ff;
-            --dark: #1e293b;
-            --dark-light: #334155;
-            --text: #475569;
-            --text-light: #64748b;
-            --white: #ffffff;
-            --gradient-primary: linear-gradient(135deg, #0056d3, #4285f4);
-            --gradient-secondary: linear-gradient(135deg, #1e6fba, #4a90e2);
-            --gradient-accent: linear-gradient(135deg, #0077cc, #0095ff);
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            --border-radius: 12px;
-            --border-radius-lg: 16px;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-color: var(--light);
-        }
-        
-        h1, h2, h3, h4, h5 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--dark);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* Header & Navigation */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-sm);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-        }
-        
-        header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: var(--shadow-md);
-            padding: 0.75rem 0;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            text-decoration: none;
-        }
-        
-        .logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            transition: var(--transition);
-        }
-        
-        .logo-subtext {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            background: var(--gradient-secondary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 500;
-            letter-spacing: 1px;
-            margin-top: 0.2rem;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 2rem;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
-            transition: var(--transition-bounce);
-        }
-        
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-        
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
-        }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(0, 86, 211, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(30, 111, 186, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 40%, rgba(0, 119, 204, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 650px;
-            color: white;
-        }
-        
-        .hero h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            font-weight: 800;
-            color: white;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 2rem;
-            background: var(--gradient-primary);
-            color: white;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition-bounce);
-            border: 2px solid transparent;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: var(--transition);
-        }
-        
-        .btn:hover:before {
-            left: 100%;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            margin-left: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-outline:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: white;
-            transition: var(--transition);
-            z-index: -1;
-        }
-        
-        .btn-outline:hover {
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover:before {
-            width: 100%;
-        }
-        
-        /* DNA Brand Style Elements */
-        .dna-pattern {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            opacity: 0.08;
-            background-image: 
-                linear-gradient(45deg, var(--primary-light) 25%, transparent 25%, transparent 75%, var(--primary-light) 75%, var(--primary-light)),
-                linear-gradient(-45deg, var(--secondary-light) 25%, transparent 25%, transparent 75%, var(--secondary-light) 75%, var(--secondary-light));
-            background-size: 80px 80px;
-            background-position: 0 0, 40px 40px;
-            animation: movePattern 20s linear infinite;
-        }
-        
-        @keyframes movePattern {
-            0% {
-                background-position: 0 0, 40px 40px;
-            }
-            100% {
-                background-position: 80px 80px, 120px 120px;
-            }
-        }
-        
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        
-        .shape {
-            position: absolute;
-            background: rgba(26, 115, 232, 0.1);
-            border-radius: 50%;
-            animation: float 15s infinite ease-in-out;
-        }
-        
-        .shape:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: -150px;
-            right: -150px;
-            animation: float 20s ease-in-out infinite, pulse 4s ease-in-out infinite;
-            animation-delay: 0s, 2s;
-            background: var(--gradient-primary);
-            opacity: 0.4;
-            filter: blur(1px);
-        }
-        
-        .shape:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            bottom: 50px;
-            left: 50px;
-            animation: float 25s ease-in-out infinite reverse, pulse 6s ease-in-out infinite;
-            animation-delay: 2s, 0s;
-            background: var(--gradient-secondary);
-            opacity: 0.3;
-            filter: blur(1px);
-        }
-        
-        .shape:nth-child(3) {
-            width: 150px;
-            height: 150px;
-            top: 50%;
-            right: 20%;
-            animation: float 15s ease-in-out infinite, pulse 3s ease-in-out infinite;
-            animation-delay: 4s, 1s;
-            background: var(--gradient-accent);
-            opacity: 0.35;
-            filter: blur(1px);
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg) scale(1);
-            }
-            25% {
-                transform: translateY(-30px) rotate(8deg) scale(1.1);
-            }
-            50% {
-                transform: translateY(0px) rotate(15deg) scale(1.05);
-            }
-            75% {
-                transform: translateY(20px) rotate(8deg) scale(0.95);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-        
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
-        }
-        
-        /* About Section */
-        .about {
-            padding: 6rem 0;
-            background: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .about:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0, 86, 211, 0.03) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            display: inline-block;
-            position: relative;
-            font-weight: 800;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary);
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-image {
-            flex: 1;
-            position: relative;
-            perspective: 1000px;
-        }
-        
-        .about-image img {
-            width: 100%;
-            border-radius: 4px;
-            transform: rotateY(5deg) rotateX(5deg);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            transition: var(--transition);
-        }
-        
-        .about-image:hover img {
-            transform: rotateY(0) rotateX(0) translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 6rem 0;
-            background: var(--light);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: var(--white);
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition-bounce);
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transform: translateZ(0);
-            border: 1px solid rgba(0, 86, 211, 0.1);
-            backdrop-filter: blur(10px);
-        }
-        
-        .service-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-        }
-        
-        .service-card:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(0, 86, 211, 0.1), rgba(30, 111, 186, 0.1));
-            transition: var(--transition);
-            z-index: -1;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-light);
-        }
-        
-        .service-card:hover:after {
-            width: 100%;
-        }
-        
-        .service-card i {
-            font-size: 2.5rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
-        }
-        
-        .service-card:hover i {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        /* Partners Section */
-        .partners {
-            padding: 6rem 0;
-            background: white;
-        }
-        
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .partner-card {
-            background: var(--white);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition-bounce);
-            text-align: center;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid rgba(0, 86, 211, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .partner-card:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg at 50% 50%, transparent, rgba(0, 86, 211, 0.1), transparent);
-            opacity: 0;
-            transition: var(--transition);
-            animation: rotate 10s linear infinite;
-        }
-        
-        .partner-card:hover:before {
-            opacity: 1;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .partner-card:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary-light);
-        }
-        
-        .partner-logo {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-        
-        .partner-logo img {
-            max-width: 100%;
-            max-height: 70px;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: var(--transition);
-        }
-        
-        .partner-card:hover .partner-logo img {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-        
-        .partner-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .partner-info p {
-            font-size: 0.9rem;
-            color: var(--text);
-        }
-        
-        /* Portfolio Section */
-        .portfolio {
-            padding: 6rem 0;
-            background: var(--light);
-        }
-        
-        .portfolio-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-        
-        .tab-btn {
-            padding: 0.8rem 1.5rem;
-            background: var(--light);
-            border: none;
-            border-radius: 4px;
-            margin: 0 0.5rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 0.8rem;
-        }
-        
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .portfolio-item {
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-            height: 250px;
-            perspective: 1000px;
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.1) rotate(2deg);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(26, 115, 232, 0.85);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: var(--transition);
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        /* Team Section */
-        .team {
-            padding: 6rem 0;
-            background: white;
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .team-member {
-            background: var(--white);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-bounce);
-            text-align: center;
-            transform-style: preserve-3d;
-            border: 1px solid rgba(0, 86, 211, 0.1);
-            position: relative;
-        }
-        
-        .team-member:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: 1;
-        }
-        
-        .team-member:hover:before {
-            opacity: 1;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .team-img {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .team-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .team-member:hover .team-img img {
-            transform: scale(1.1);
-        }
-        
-        .team-info {
-            padding: 1.5rem;
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 6rem 0;
-            background: var(--light);
-        }
-        
-        .contact-container {
-            display: flex;
-            gap: 4rem;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-form {
-            flex: 1;
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .info-item i {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-right: 1rem;
-            width: 40px;
-            height: 40px;
-            background: rgba(26, 115, 232, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid rgba(0, 86, 211, 0.1);
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            font-family: 'Poppins', sans-serif;
-            background: rgba(248, 250, 252, 0.5);
-            backdrop-filter: blur(10px);
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary-light);
-            box-shadow: 0 0 0 3px rgba(0, 86, 211, 0.1), var(--shadow-md);
-            outline: none;
-            transform: translateY(-2px) scale(1.02);
-            background: var(--white);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-        
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-        
-        .footer-col h3 {
-            color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-        
-        .footer-col p {
-            margin-bottom: 1rem;
-            opacity: 0.8;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            color: white;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .footer-links {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-        
-        .copyright {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
-        }
-        
-        /* Utility Classes */
-        .text-gradient {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .highlight {
-            background: linear-gradient(135deg, rgba(0, 86, 211, 0.1), rgba(30, 111, 186, 0.1));
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            display: inline;
-        }
-        
-        .section-divider {
-            height: 4px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
-            margin: 4rem auto;
-            max-width: 100px;
-        }
-        
-        /* Speakers Section */
-        .speakers {
-            padding: 6rem 0;
-            background: var(--light);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .speakers:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(30, 111, 186, 0.03) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        
-        .speakers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .speaker-card {
-            background: var(--white);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-bounce);
-            border: 1px solid rgba(0, 86, 211, 0.1);
-            position: relative;
-        }
-        
-        .speaker-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-secondary);
-            opacity: 0;
-            transition: var(--transition);
-        }
-        
-        .speaker-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .speaker-card:hover:before {
-            opacity: 1;
-        }
-        
-        .speaker-img {
-            height: 280px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .speaker-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .speaker-card:hover .speaker-img img {
-            transform: scale(1.1);
-        }
-        
-        .speaker-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 86, 211, 0.8), rgba(30, 111, 186, 0.8));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: var(--transition);
-            color: white;
-            text-align: center;
-        }
-        
-        .speaker-card:hover .speaker-overlay {
-            opacity: 1;
-        }
-        
-        .speaker-overlay h3 {
-            color: white;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .speaker-overlay p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .speaker-info {
-            padding: 2rem;
-        }
-        
-        .speaker-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .speaker-info .title {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .speaker-info .specialty {
-            color: var(--secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-        
-        .speaker-info p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: var(--text);
-            margin-bottom: 1.5rem;
-        }
-        
-        .speaker-social {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .speaker-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 86, 211, 0.1);
-            border-radius: 50%;
-            color: var(--primary);
-            transition: var(--transition-bounce);
-            text-decoration: none;
-        }
-        
-        .speaker-social a:hover {
-            background: var(--gradient-primary);
-            color: white;
-            transform: translateY(-3px) scale(1.1);
-        }
-        
-        /* Our Mission Section */
-        .mission {
-            padding: 6rem 0;
-            background: var(--gradient-primary);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .mission .section-title h2 {
-            color: white;
-        }
-        
-        .mission-statement {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: var(--border-radius-lg);
-            padding: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-        }
-        
-        .mission-statement h3 {
-            color: white;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .mission-statement p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-        
-        .mission-values {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        
-        .mission-value {
-            text-align: center;
-            min-width: 150px;
-        }
-        
-        .mission-value i {
-            font-size: 2.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 0.5rem;
-        }
-        
-        .mission-value p.value-title {
-            color: white;
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-        }
-        
-        .mission-value p.value-description {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            
-            .hero h2 {
-                font-size: 2.8rem;
-            }
-            
-            .partners-grid {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
-            nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-                padding: 0;
-                max-height: 0;
-                overflow: hidden;
-                transition: var(--transition);
-                box-shadow: var(--shadow-md);
-                border-radius: 0 0 var(--border-radius) var(--border-radius);
-            }
-            
-            nav.active {
-                max-height: 600px;
-                padding: 1rem 0;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                padding: 0 2rem;
-            }
-            
-            nav ul li {
-                margin: 0.5rem 0;
-            }
-            
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .btn {
-                display: block;
-                text-align: center;
-                margin-bottom: 1rem;
-            }
-            
-            .btn-outline {
-                margin-left: 0;
-            }
-            
-            .logo-text {
-                font-size: 1.5rem;
-            }
-            
-            .logo-subtext {
-                font-size: 0.7rem;
-            }
-            
-            .partners-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 1.5rem;
-            }
-            
-            .speakers-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .speaker-info {
-                padding: 1.5rem;
-            }
-            
-            .speaker-img {
-                height: 250px;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .mission-statement {
-                padding: 1.5rem !important;
-            }
-        }
-    </style>
+    <title>Bidvest Living - Customer Portal</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <div class="container header-container">
-            <a href="#" class="logo">
-                <div class="logo-text">MD HEALTH CONNEXIONS</div>
-                <div class="logo-subtext">We Connect Healthcare Professionals</div>
-            </a>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+                    <path d="M20 8 L20 32 M8 20 L32 20" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="20" cy="20" r="4" fill="currentColor"/>
+                </svg>
+                <span class="logo-text">Bidvest Living</span>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <!--<li><a href="#mission">Mission</a></li>-->
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#partners">Partners</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#speakers">Speakers</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="dna-pattern"></div>
-        <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
-        <div class="container hero-content">
-            <h2>Connecting Healthcare Professionals in South Africa</h2>
-            <p>With over 15 years of experience, we help healthcare professionals and organizations build, promote, and develop their practices through strategic marketing and consulting services.</p>
-            <div class="hero-buttons">
-                <a href="#services" class="btn">
-                    <i class="fas fa-rocket" style="margin-right: 0.5rem;"></i>
-                    Our Services
-                </a>
-                <a href="#contact" class="btn btn-outline">
-                    <i class="fas fa-phone" style="margin-right: 0.5rem;"></i>
-                    Contact Us
-                </a>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-page="dashboard">Dashboard</a></li>
+                <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="#" class="nav-link" data-page="loyalty">Loyalty Rewards</a></li>
+                <li><a href="#" class="nav-link" data-page="sustainability">Sustainability</a></li>
+                <li><a href="#" class="nav-link" data-page="billing">Billing</a></li>
+            </ul>
+            <div class="nav-user">
+                <span class="user-name">Luxury Resort Group</span>
+                <div class="user-avatar">LR</div>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Us</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Your Partner in Healthcare Practice Growth</h3>
-                    <div class="highlight-box" style="background: linear-gradient(135deg, rgba(0, 86, 211, 0.05), rgba(30, 111, 186, 0.05)); padding: 1.5rem; border-radius: var(--border-radius); margin-bottom: 1.5rem; border-left: 4px solid var(--primary);">
-                        <p><strong>MD Health Connexions</strong> is a marketing and consulting firm specializing in the medical and healthcare sector in South Africa. We focus on helping healthcare professionals and organizations build, promote, and develop their practices.</p>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Welcome back, Luxury Resort Group</h1>
+                    <p class="hero-subtitle">Your complete facility management dashboard</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">🌿</div>
+                        <div class="stat-info">
+                            <div class="stat-value">6</div>
+                            <div class="stat-label">Active Services</div>
+                        </div>
                     </div>
-                    <p>With over <span style="color: var(--primary); font-weight: 600;">15 years</span> of experience in the industry, we offer tailored advisory services to improve brand perception, market positioning, and client engagement strategies.</p>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Upcoming This Week</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">♻️</div>
+                        <div class="stat-info">
+                            <div class="stat-value">-24%</div>
+                            <div class="stat-label">Carbon Reduction</div>
+                        </div>
+                    </div>
+                    <div class="stat-card tier-badge">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-info">
+                            <div class="stat-value">Gold Tier</div>
+                            <div class="stat-label">15% Discount Active</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=1887&q=80" alt="Healthcare Professionals">
+            </section>
+
+            <!-- Upcoming Services -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Upcoming Services</h2>
+                    <button class="btn-secondary" onclick="showPage('services')">View All</button>
                 </div>
-            </div>
+                <div class="service-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <div class="date-day">MON</div>
+                            <div class="date-num">14</div>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="service-header">
+                                <div class="service-title">
+                                    <span class="service-icon">🌳</span>
+                                    <span>Landscaping Maintenance</span>
+                                </div>
+                                <span class="status-badge status-scheduled">Scheduled</span>
+                            </div>
+                            <div class="service-details">
+                                <p>Main entrance and courtyard maintenance</p>
+                                <div class="service-meta">
+                                    <span>⏰ 8:00 AM - 11:00 AM</span>
+                                    <span>👤 Team Lead: Marcus Chen</span>
+                                </div>
+                            </div>
+                            <button class="btn-link">Track Service</button>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <div class="date-day">TUE</div>
+                            <div class="date-num">15</div>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="service-header">
+                                <div class="service-title">
+                                    <span class="service-icon">🪴</span>
+                                    <span>Indoor Plant Service</span>
+                                </div>
+                                <span class="status-badge status-scheduled">Scheduled</span>
+                            </div>
+                            <div class="service-details">
+                                <p>Lobby and conference room plant care</p>
+                                <div class="service-meta">
+                                    <span>⏰ 2:00 PM - 3:30 PM</span>
+                                    <span>👤 Specialist: Sarah Martinez</span>
+                                </div>
+                            </div>
+                            <div class="ai-insight">
+                                <span class="ai-badge">AI Insight</span>
+                                <p>3 plants showing early stress signs - preventive care included</p>
+                            </div>
+                            <button class="btn-link">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <div class="date-day">WED</div>
+                            <div class="date-num">16</div>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="service-header">
+                                <div class="service-title">
+                                    <span class="service-icon">🧺</span>
+                                    <span>Laundry & Linen Service</span>
+                                </div>
+                                <span class="status-badge status-scheduled">Scheduled</span>
+                            </div>
+                            <div class="service-details">
+                                <p>Weekly pickup: Guest robes, tablecloths, uniforms</p>
+                                <div class="service-meta">
+                                    <span>⏰ 10:00 AM - 10:30 AM</span>
+                                    <span>📦 Estimated: 45 items</span>
+                                </div>
+                            </div>
+                            <button class="btn-link">Modify Order</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Quick Actions</h2>
+                </div>
+                <div class="quick-actions">
+                    <button class="action-card" onclick="showPage('services')">
+                        <div class="action-icon">📅</div>
+                        <div class="action-text">
+                            <div class="action-title">Book Service</div>
+                            <div class="action-subtitle">Schedule new service</div>
+                        </div>
+                    </button>
+                    <button class="action-card">
+                        <div class="action-icon">💬</div>
+                        <div class="action-text">
+                            <div class="action-title">Contact Support</div>
+                            <div class="action-subtitle">24/7 assistance</div>
+                        </div>
+                    </button>
+                    <button class="action-card" onclick="showPage('sustainability')">
+                        <div class="action-icon">📊</div>
+                        <div class="action-text">
+                            <div class="action-title">View Reports</div>
+                            <div class="action-subtitle">ESG & analytics</div>
+                        </div>
+                    </button>
+                    <button class="action-card">
+                        <div class="action-icon">⚙️</div>
+                        <div class="action-text">
+                            <div class="action-title">Settings</div>
+                            <div class="action-subtitle">Preferences & alerts</div>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- AI Recommendations -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Personalized Recommendations</h2>
+                    <span class="ai-badge">Powered by AI</span>
+                </div>
+                <div class="recommendations">
+                    <div class="recommendation-card">
+                        <div class="recommendation-header">
+                            <span class="recommendation-icon">🌺</span>
+                            <h3>Seasonal Landscaping Refresh</h3>
+                        </div>
+                        <p>Based on your location and preferences, we recommend updating your seasonal plantings for spring. Expected bloom period: March-May.</p>
+                        <div class="recommendation-footer">
+                            <span class="recommendation-savings">Save 20% when bundled</span>
+                            <button class="btn-primary-sm">Learn More</button>
+                        </div>
+                    </div>
+                    <div class="recommendation-card">
+                        <div class="recommendation-header">
+                            <span class="recommendation-icon">☕</span>
+                            <h3>Premium Coffee Upgrade</h3>
+                        </div>
+                        <p>Your guests rated coffee service highly. Upgrade to our sustainable, single-origin premium blend for enhanced experience.</p>
+                        <div class="recommendation-footer">
+                            <span class="recommendation-savings">Trial: First month free</span>
+                            <button class="btn-primary-sm">Try It</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Our Mission Section -->
-    <section id="mission" class="mission">
-        <div style="content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 50%); pointer-events: none;"></div>
-        <div class="container" style="position: relative; z-index: 2;">
-            <div class="section-title">
-                <h2>Our Mission</h2>
-            </div>
-            <div class="mission-statement">
-                <h3>"We Connect Healthcare Professionals"</h3>
-                <p>Creating bridges between medical practitioners and the communities they serve, fostering collaboration, knowledge sharing, and professional growth across South Africa's healthcare landscape.</p>
-                <div class="mission-values">
-                    <div class="mission-value">
-                        <i class="fas fa-users"></i>
-                        <p class="value-title">Connect</p>
-                        <p class="value-description">Healthcare Professionals</p>
-                    </div>
-                    <div class="mission-value">
-                        <i class="fas fa-lightbulb"></i>
-                        <p class="value-title">Empower</p>
-                        <p class="value-description">Through Education</p>
-                    </div>
-                    <div class="mission-value">
-                        <i class="fas fa-heart"></i>
-                        <p class="value-title">Serve</p>
-                        <p class="value-description">Our Communities</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Services Page -->
+        <div id="services" class="page">
+            <section class="page-header">
+                <h1>Service Management</h1>
+                <p>Book, manage, and track all your Bidvest Living services</p>
+            </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-user-md"></i>
-                    <h3>For Individuals</h3>
-                    <p>Practice establishment, CPD functions, marketing materials, market research, customer service evaluation, and social media marketing.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-hospital"></i>
-                    <h3>For Organizations</h3>
-                    <p>Grand openings, service marketing, practice growth support, CPD events, staff training, and brand activation campaigns.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <h3>Staff Training</h3>
-                    <p>Soft skills development focusing on communication, telephone etiquette, and customer service to enhance patient satisfaction.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-hashtag"></i>
-                    <h3>Social Media Marketing</h3>
-                    <p>Lead generation, audience targeting, online presence development, and measurable ROI-focused campaigns.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Events</h2>
-                <p>Connecting healthcare professionals through educational seminars and CPD events</p>
-            </div>
-            <div class="portfolio-tabs">
-                <a href="upcoming-events.html" class="tab-btn active" style="text-decoration: none; color: inherit;">
-                    <i class="fas fa-calendar-alt" style="margin-right: 0.5rem;"></i>
-                    Upcoming Events
-                </a>
-                <button class="tab-btn">
-                    <i class="fas fa-images" style="margin-right: 0.5rem;"></i>
-                    Gallery
-                </button>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Klerksdorp CPD Seminar">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-map-marker-alt" style="font-size: 1.5rem; margin-bottom: 1rem;"></i>
-                        <h3>Klerksdorp CPD Seminar</h3>
-                        <p><i class="fas fa-calendar"></i> September 2025</p>
-                        <p><i class="fas fa-clock"></i> Full Day Event</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Kimberley CPD Symposium">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-users" style="font-size: 1.5rem; margin-bottom: 1rem;"></i>
-                        <h3>Kimberley CPD Symposium</h3>
-                        <p><i class="fas fa-calendar"></i> October 2025</p>
-                        <p><i class="fas fa-clock"></i> 2-Day Conference</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&auto=format&fit=crop&w=2012&q=80" alt="Piet Retief Seminar">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-graduation-cap" style="font-size: 1.5rem; margin-bottom: 1rem;"></i>
-                        <h3>Piet Retief Seminar</h3>
-                        <p><i class="fas fa-calendar"></i> September 2025</p>
-                        <p><i class="fas fa-clock"></i> Workshop Series</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section id="partners" class="partners">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Partners</h2>
-                <p>We collaborate with leading healthcare organizations and institutions across South Africa</p>
-            </div>
-            <div class="partners-grid">
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/MediClinic-0056D3?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMkw0IDlWMjFIMjBWOUwxMiAyWiIgZmlsbD0iI0ZGRkZGRiIvPjwvc3ZnPg==&logoColor=white" alt="MediClinic">
-                    </div>
-                    <div class="partner-info">
-                        <h3>MediClinic</h3>
-                        <p>Private Hospital Group</p>
-                    </div>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/Netcare-1E6FBA?style=for-the-badge&logo=heart&logoColor=white" alt="Netcare">
-                    </div>
-                    <div class="partner-info">
-                        <h3>Netcare</h3>
-                        <p>Healthcare Provider</p>
-                    </div>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/Life_Healthcare-4285F4?style=for-the-badge&logo=medical-bag&logoColor=white" alt="Life Healthcare">
-                    </div>
-                    <div class="partner-info">
-                        <h3>Life Healthcare</h3>
-                        <p>Hospital Group</p>
-                    </div>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/SA_Medical-0077CC?style=for-the-badge&logo=stethoscope&logoColor=white" alt="SA Medical Association">
-                    </div>
-                    <div class="partner-info">
-                        <h3>SA Medical Association</h3>
-                        <p>Professional Body</p>
-                    </div>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/HPCSA-0056D3?style=for-the-badge&logo=shield&logoColor=white" alt="HPCSA">
-                    </div>
-                    <div class="partner-info">
-                        <h3>HPCSA</h3>
-                        <p>Health Professions Council</p>
-                    </div>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/Discovery-1E6FBA?style=for-the-badge&logo=search&logoColor=white" alt="Discovery Health">
-                    </div>
-                    <div class="partner-info">
-                        <h3>Discovery Health</h3>
-                        <p>Medical Insurance</p>
-                    </div>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/Bonitas-4285F4?style=for-the-badge&logo=heart-pulse&logoColor=white" alt="Bonitas">
-                    </div>
-                    <div class="partner-info">
-                        <h3>Bonitas Medical Fund</h3>
-                        <p>Healthcare Funding</p>
-                    </div>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/AfroCentric-0077CC?style=for-the-badge&logo=health&logoColor=white" alt="AfroCentric">
-                    </div>
-                    <div class="partner-info">
-                        <h3>AfroCentric Health</h3>
-                        <p>Healthcare Solutions</p>
-                    </div>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/SA_Doctors-0056D3?style=for-the-badge&logo=user-md&logoColor=white" alt="SA Doctors">
-                    </div>
-                    <div class="partner-info">
-                        <h3>South African Doctors</h3>
-                        <p>Physician Network</p>
-                    </div>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/CPD_SA-1E6FBA?style=for-the-badge&logo=graduation-cap&logoColor=white" alt="CPD SA">
-                    </div>
-                    <div class="partner-info">
-                        <h3>CPD South Africa</h3>
-                        <p>Professional Development</p>
-                    </div>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/Health_Forum-4285F4?style=for-the-badge&logo=forum&logoColor=white" alt="Health Forum SA">
-                    </div>
-                    <div class="partner-info">
-                        <h3>Health Forum SA</h3>
-                        <p>Industry Association</p>
-                    </div>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://img.shields.io/badge/MedScheme-0077CC?style=for-the-badge&logo=clipboard&logoColor=white" alt="MedScheme">
-                    </div>
-                    <div class="partner-info">
-                        <h3>MedScheme</h3>
-                        <p>Medical Aid Administrator</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Speakers Section -->
-    <section id="speakers" class="speakers">
-        <div class="container">
-            <div class="section-title">
-                <h2>Featured Speakers</h2>
-                <p>Renowned healthcare professionals who share their expertise at our events</p>
-            </div>
-            <div class="speakers-grid">
-                <div class="speaker-card">
-                    <div class="speaker-img">
-                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Dr. Sarah Johnson">
-                        <div class="speaker-overlay">
-                            <h3>Cardiology Expert</h3>
-                            <p>15+ years experience</p>
+            <!-- Service Categories -->
+            <section class="section">
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">🌳</span>
+                            <h3>Landscaping</h3>
+                            <span class="status-badge status-active">Active</span>
                         </div>
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Dr. Sarah Johnson</h3>
-                        <div class="title">Cardiologist</div>
-                        <div class="specialty">Specializes in interventional cardiology and heart disease prevention</div>
-                        <p>Former Head of Cardiology at Groote Schuur Hospital, with numerous published research papers on cardiovascular health.</p>
-                        <div class="speaker-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="speaker-card">
-                    <div class="speaker-img">
-                        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Dr. Michael Rodriguez">
-                        <div class="speaker-overlay">
-                            <h3>Oncology Specialist</h3>
-                            <p>12+ years experience</p>
-                        </div>
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Dr. Michael Rodriguez</h3>
-                        <div class="title">Oncologist</div>
-                        <div class="specialty">Expert in breast cancer treatment and research</div>
-                        <p>Director of Oncology at Cape Town Medical Center, leading several groundbreaking cancer research initiatives.</p>
-                        <div class="speaker-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-researchgate"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="speaker-card">
-                    <div class="speaker-img">
-                        <img src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80" alt="Dr. Amina Patel">
-                        <div class="speaker-overlay">
-                            <h3>Pediatrics Specialist</h3>
-                            <p>18+ years experience</p>
-                        </div>
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Dr. Amina Patel</h3>
-                        <div class="title">Pediatrician</div>
-                        <div class="specialty">Focus on childhood development and vaccination programs</div>
-                        <p>Founder of the Children's Health Initiative, advocating for improved pediatric care across South Africa.</p>
-                        <div class="speaker-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="speaker-card">
-                    <div class="speaker-img">
-                        <img src="https://images.unsplash.com/photo-1622253694242-abeb37a33e97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1064&q=80" alt="Prof. James Mulder">
-                        <div class="speaker-overlay">
-                            <h3>Medical Education</h3>
-                            <p>25+ years experience</p>
-                        </div>
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Prof. James Mulder</h3>
-                        <div class="title">Medical Educator</div>
-                        <div class="specialty">CPD accreditation and medical training programs</div>
-                        <p>Professor of Medical Education at University of Pretoria, specializing in continuing professional development for healthcare practitioners.</p>
-                        <div class="speaker-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <p><strong>Office:</strong> +27 11 951 0249</p>
-                            <p><strong>Mobile:</strong> +27 79 524 2430</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p><strong>Email:</strong></p>
-                            <p>info@mdhealthconnexions.co.za</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p><strong>Address:</strong></p>
-                            <p>9 Burger Street, Krugersdorp 1739</p>
-                            <p>Gauteng, South Africa</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <h3>MD Health Connexions</h3>
-                    <p>Connecting healthcare professionals and helping them build successful practices through strategic marketing and consulting services.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#partners">Partners</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#speakers">Speakers</a></li>
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#services">For Individuals</a></li>
-                        <li><a href="#services">For Organizations</a></li>
-                        <li><a href="#services">Staff Training</a></li>
-                        <li><a href="#services">Social Media Marketing</a></li>
-                        <li><a href="#speakers">CPD Events</a></li>
-                    </ul>
-                    <h3>Partners</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">MediClinic</a></li>
-                        <li><a href="#">Netcare</a></li>
-                        <li><a href="#">Life Healthcare</a></li>
-                        <li><a href="#">View All Partners</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="section-divider"></div>
-            <div class="copyright">
-                <p>&copy; 2024 MD Health Connexions. All rights reserved. | Designed with ❤️ for Healthcare Excellence</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav');
-        const header = document.querySelector('header');
-        
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                // Update navigation active state
-                document.querySelectorAll('nav ul li a').forEach(item => {
-                    item.classList.remove('active');
-                });
-                link.classList.add('active');
-            });
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Portfolio tabs
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                tabBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                // Add animation to portfolio items
-                const portfolioItems = document.querySelectorAll('.portfolio-item');
-                portfolioItems.forEach((item, index) => {
-                    item.style.animation = 'none';
-                    setTimeout(() => {
-                        item.style.animation = `fadeInUp 0.6s ease forwards ${index * 0.1}s`;
-                    }, 50);
-                });
-            });
-        });
-        
-        // Enhanced 4D Animation Effects
-        document.addEventListener('mousemove', (e) => {
-            const shapes = document.querySelectorAll('.shape');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            shapes.forEach((shape, index) => {
-                const speed = 20 + (index * 10);
-                const xOffset = (x - 0.5) * speed;
-                const yOffset = (y - 0.5) * speed;
-                const rotation = (x - 0.5) * (y - 0.5) * 360;
-                
-                shape.style.transform += ` translate(${xOffset}px, ${yOffset}px) rotate(${rotation}deg)`;
-            });
-        });
-        
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
-                }
-            });
-        }, observerOptions);
-        
-        // Observe all animatable elements
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatableElements = document.querySelectorAll(
-                '.service-card, .partner-card, .team-member, .portfolio-item, .speaker-card, .about-text, .about-image'
-            );
-            
-            animatableElements.forEach((el, index) => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                observer.observe(el);
-            });
-        });
-        
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            const heroContent = document.querySelector('.hero-content');
-            const shapes = document.querySelectorAll('.shape');
-            
-            if (hero && scrolled < hero.offsetHeight) {
-                heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
-                shapes.forEach((shape, index) => {
-                    const speed = 0.2 + (index * 0.1);
-                    shape.style.transform += ` translateY(${scrolled * speed}px)`;
-                });
-            }
-        });
-        
-        // Form enhancements
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.querySelector('.contact-form form');
-            if (form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const submitBtn = form.querySelector('.btn');
-                    const originalText = submitBtn.textContent;
-                    
-                    submitBtn.textContent = 'Sending...';
-                    submitBtn.style.opacity = '0.7';
-                    
-                    // Simulate form submission
-                    setTimeout(() => {
-                        submitBtn.textContent = 'Message Sent!';
-                        submitBtn.style.background = 'var(--secondary)';
-                        
-                        setTimeout(() => {
-                            submitBtn.textContent = originalText;
-                            submitBtn.style.opacity = '1';
-                            submitBtn.style.background = 'var(--gradient-primary)';
-                            form.reset();
-                        }, 2000);
-                    }, 1500);
-                });
-            }
-        });
-    </script>
-
-    <!-- Dynamic Content Loading -->
-    <script src="api.js"></script>
-    <script>
-        // Initialize API
-        const api = new EventsAPI();
-
-        // Load gallery items
-        function loadGalleryItems() {
-            const items = api.getAllGalleryItems({ status: 'published' });
-            const galleryGrid = document.querySelector('.portfolio-grid');
-
-            if (!galleryGrid) return;
-
-            // Filter out items linked to events (those will show in upcoming events section)
-            const standaloneItems = items.filter(item => !item.eventId);
-
-            if (standaloneItems.length === 0) {
-                galleryGrid.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-light);">
-                        <i class="fas fa-images" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
-                        <h3>No Gallery Items</h3>
-                        <p>Gallery items linked to events will appear in the Upcoming Events section.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            galleryGrid.innerHTML = standaloneItems.map(item => {
-                const hasAlbum = item.albumImages && item.albumImages.length > 0;
-                const albumLink = hasAlbum ? `event-album.html?id=${item.id}` : '#';
-                const clickHandler = hasAlbum ? `onclick="window.location.href='${albumLink}'"` : '';
-
-                return `
-                    <div class="portfolio-item" ${clickHandler} style="${hasAlbum ? 'cursor: pointer;' : ''}">
-                        <img src="${item.imageUrl}" alt="${item.title}">
-                        <div class="portfolio-overlay">
-                            <i class="fas ${item.icon || 'fa-image'}" style="font-size: 1.5rem; margin-bottom: 1rem;"></i>
-                            <h3>${item.title}</h3>
-                            ${item.date ? `<p><i class="fas fa-calendar"></i> ${item.date}</p>` : ''}
-                            ${item.description ? `<p><i class="fas fa-clock"></i> ${item.description}</p>` : ''}
-                            ${hasAlbum ? `<p><i class="fas fa-images"></i> ${item.albumImages.length} photos</p>` : ''}
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Load event gallery items (items linked to upcoming events)
-        function loadEventGalleryItems() {
-            const items = api.getAllGalleryItems({ status: 'published' });
-            const events = api.getAllEvents({ status: 'published' });
-
-            // Filter items that are linked to events
-            const eventLinkedItems = items.filter(item => item.eventId);
-
-            if (eventLinkedItems.length === 0) return;
-
-            // Find the portfolio grid before the calendar view
-            const portfolioSection = document.querySelector('#portfolio');
-            if (!portfolioSection) return;
-
-            // Check if we already have an events gallery container
-            let eventsGalleryContainer = document.getElementById('eventsGalleryGrid');
-
-            if (!eventsGalleryContainer) {
-                // Create container for event-linked gallery items
-                const galleryButton = portfolioSection.querySelector('.tab-btn[href="upcoming-events.html"]');
-                if (galleryButton && galleryButton.parentElement) {
-                    eventsGalleryContainer = document.createElement('div');
-                    eventsGalleryContainer.id = 'eventsGalleryGrid';
-                    eventsGalleryContainer.className = 'portfolio-grid';
-                    eventsGalleryContainer.style.display = 'none';
-
-                    // Insert after the tabs
-                    const tabsContainer = galleryButton.parentElement;
-                    tabsContainer.parentElement.insertBefore(eventsGalleryContainer, tabsContainer.nextSibling.nextSibling);
-                }
-            }
-
-            if (eventsGalleryContainer) {
-                eventsGalleryContainer.innerHTML = eventLinkedItems.map(item => {
-                    const linkedEvent = events.find(e => e.id === item.eventId);
-                    const hasAlbum = item.albumImages && item.albumImages.length > 0;
-                    const albumLink = hasAlbum ? `event-album.html?id=${item.id}` : '#';
-                    const clickHandler = hasAlbum ? `onclick="window.location.href='${albumLink}'"` : '';
-
-                    return `
-                        <div class="portfolio-item" ${clickHandler} style="${hasAlbum ? 'cursor: pointer;' : ''}">
-                            <img src="${item.imageUrl}" alt="${item.title}">
-                            <div class="portfolio-overlay">
-                                <i class="fas ${item.icon || 'fa-calendar'}" style="font-size: 1.5rem; margin-bottom: 1rem;"></i>
-                                <h3>${item.title}</h3>
-                                ${linkedEvent ? `
-                                    <p><i class="fas fa-calendar"></i> ${linkedEvent.date}</p>
-                                    <p><i class="fas fa-map-marker-alt"></i> ${linkedEvent.location}</p>
-                                    ${linkedEvent.cpdPoints ? `<p><i class="fas fa-award"></i> ${linkedEvent.cpdPoints} CPD Points</p>` : ''}
-                                ` : ''}
-                                ${hasAlbum ? `<p><i class="fas fa-images"></i> ${item.albumImages.length} photos</p>` : ''}
+                        <p class="service-description">Professional landscaping design and maintenance for your property</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Next Service</span>
+                                <span class="stat-value">Oct 14, 8:00 AM</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Frequency</span>
+                                <span class="stat-value">Weekly</span>
                             </div>
                         </div>
-                    `;
-                }).join('');
-            }
-        }
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Schedule</button>
+                            <button class="btn-link">View History</button>
+                        </div>
+                    </div>
 
-        // Load page content
-        function loadPageContent() {
-            const content = api.getContent();
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">🪴</span>
+                            <h3>Indoor Plants</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="service-description">Biophilic design and maintenance for healthier indoor environments</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Next Service</span>
+                                <span class="stat-value">Oct 15, 2:00 PM</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Plants Monitored</span>
+                                <span class="stat-value">47 units</span>
+                            </div>
+                        </div>
+                        <div class="ai-insight">
+                            <span class="ai-badge-sm">AI</span>
+                            <p>3 plants need attention - auto-scheduled</p>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Manage</button>
+                            <button class="btn-link">Plant Health</button>
+                        </div>
+                    </div>
 
-            // Update hero section
-            if (content.hero) {
-                const heroTitle = document.querySelector('.hero h1');
-                const heroSubtitle = document.querySelector('.hero .subtitle');
-                const heroDescription = document.querySelector('.hero p');
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">☕</span>
+                            <h3>Coffee & Water</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="service-description">Premium coffee and water solutions with sustainability focus</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Auto-Replenish</span>
+                                <span class="stat-value">Enabled</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Monthly Usage</span>
+                                <span class="stat-value">280 cups</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Reorder</button>
+                            <button class="btn-link">Settings</button>
+                        </div>
+                    </div>
 
-                if (heroTitle) heroTitle.textContent = content.hero.title || heroTitle.textContent;
-                if (heroSubtitle) heroSubtitle.textContent = content.hero.subtitle || heroSubtitle.textContent;
-                if (heroDescription && heroDescription.textContent.includes('Join us')) {
-                    heroDescription.textContent = content.hero.description || heroDescription.textContent;
-                }
-            }
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">🧴</span>
+                            <h3>Hotel Amenities</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="service-description">Custom branded amenities with eco-friendly packaging</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Custom Brand</span>
+                                <span class="stat-value">Resort Premium Line</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Next Delivery</span>
+                                <span class="stat-value">Oct 20</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Order</button>
+                            <button class="btn-link">Customize</button>
+                        </div>
+                    </div>
 
-            // Update about section
-            if (content.about) {
-                const aboutTitle = document.querySelector('#about .section-title h2');
-                const aboutSubtitle = document.querySelector('#about .section-title p');
-                const aboutDescription = document.querySelector('#about .about-content p');
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">🧺</span>
+                            <h3>Laundry Service</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="service-description">Commercial laundry with eco-friendly cleaning processes</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Next Pickup</span>
+                                <span class="stat-value">Oct 16, 10:00 AM</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Weekly Average</span>
+                                <span class="stat-value">45 items</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Schedule Pickup</button>
+                            <button class="btn-link">Track Order</button>
+                        </div>
+                    </div>
 
-                if (aboutTitle) aboutTitle.textContent = content.about.title || aboutTitle.textContent;
-                if (aboutSubtitle) aboutSubtitle.textContent = content.about.subtitle || aboutSubtitle.textContent;
-                if (aboutDescription) aboutDescription.textContent = content.about.description || aboutDescription.textContent;
-            }
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">👔</span>
+                            <h3>Garment Rental</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="service-description">Uniform and event garment rental with maintenance</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Active Rentals</span>
+                                <span class="stat-value">32 uniforms</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Rotation</span>
+                                <span class="stat-value">Bi-weekly</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Manage Inventory</button>
+                            <button class="btn-link">Size Guide</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            // Update contact section (if exists)
-            if (content.contact) {
-                const contactItems = document.querySelectorAll('.contact-item');
-                contactItems.forEach(item => {
-                    const icon = item.querySelector('i');
-                    if (icon && icon.classList.contains('fa-envelope')) {
-                        const text = item.querySelector('p');
-                        if (text) text.textContent = content.contact.email;
-                    }
-                    if (icon && icon.classList.contains('fa-phone')) {
-                        const text = item.querySelector('p');
-                        if (text) text.textContent = content.contact.phone;
-                    }
-                    if (icon && icon.classList.contains('fa-map-marker-alt')) {
-                        const text = item.querySelector('p');
-                        if (text) text.textContent = content.contact.address;
-                    }
-                });
-            }
-        }
+            <!-- Bundle Upgrade CTA -->
+            <section class="section">
+                <div class="upgrade-banner">
+                    <div class="upgrade-content">
+                        <h3>🌟 You're on Gold Tier (15% discount)</h3>
+                        <p>You're using 6 services and saving significantly. Refer a colleague to earn additional rewards!</p>
+                    </div>
+                    <button class="btn-primary">Refer & Earn</button>
+                </div>
+            </section>
+        </div>
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadGalleryItems();
-            loadEventGalleryItems();
-            loadPageContent();
+        <!-- Loyalty Rewards Page -->
+        <div id="loyalty" class="page">
+            <section class="page-header">
+                <h1>Loyalty Rewards Program</h1>
+                <p>Your rewards dashboard - track points, savings, and exclusive benefits</p>
+            </section>
 
-            // Setup tab switching for gallery
-            setupGalleryTabs();
+            <!-- Loyalty Tier Status -->
+            <section class="section">
+                <div class="loyalty-hero">
+                    <div class="tier-showcase">
+                        <div class="current-tier gold">
+                            <div class="tier-icon">
+                                <svg viewBox="0 0 100 100" class="tier-badge-icon">
+                                    <circle cx="50" cy="50" r="45" fill="#f59e0b"/>
+                                    <text x="50" y="60" text-anchor="middle" fill="white" font-size="24" font-weight="bold">GOLD</text>
+                                </svg>
+                            </div>
+                            <h2>Gold Tier Member</h2>
+                            <p class="tier-benefit">Currently enjoying 15% discount on all services</p>
+                        </div>
+                        <div class="tier-progress-container">
+                            <div class="tier-labels">
+                                <span class="tier-label bronze">Bronze (2 services)</span>
+                                <span class="tier-label silver">Silver (3 services)</span>
+                                <span class="tier-label gold active">Gold (4 services)</span>
+                                <span class="tier-label platinum">Platinum (All 6 services)</span>
+                            </div>
+                            <div class="tier-progress-bar">
+                                <div class="tier-progress-fill" style="width: 75%;"></div>
+                                <div class="tier-milestone" style="left: 25%;"></div>
+                                <div class="tier-milestone" style="left: 50%;"></div>
+                                <div class="tier-milestone active" style="left: 75%;"></div>
+                                <div class="tier-milestone" style="left: 100%;"></div>
+                            </div>
+                            <p class="tier-next-level">Add 2 more services to reach Platinum Tier (20% discount)</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            // Auto-refresh every 10 seconds to sync with admin changes
-            setInterval(() => {
-                loadGalleryItems();
-                loadEventGalleryItems();
-                loadPageContent();
-            }, 10000);
-        });
+            <!-- Rewards Summary Cards -->
+            <section class="section">
+                <h2>Your Rewards Summary</h2>
+                <div class="rewards-grid">
+                    <div class="reward-card primary">
+                        <div class="reward-icon">💰</div>
+                        <div class="reward-data">
+                            <div class="reward-value">R18,245</div>
+                            <div class="reward-label">Total Savings This Year</div>
+                            <div class="reward-detail">From Gold Tier 15% discount</div>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <div class="reward-icon">🎁</div>
+                        <div class="reward-data">
+                            <div class="reward-value">2,450</div>
+                            <div class="reward-label">Reward Points Available</div>
+                            <div class="reward-detail">R245 redemption value</div>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <div class="reward-icon">🏆</div>
+                        <div class="reward-data">
+                            <div class="reward-value">Gold</div>
+                            <div class="reward-label">Member Since</div>
+                            <div class="reward-detail">January 2023 (33 months)</div>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <div class="reward-icon">📈</div>
+                        <div class="reward-data">
+                            <div class="reward-value">6/6</div>
+                            <div class="reward-label">Services Contracted</div>
+                            <div class="reward-detail">Upgrade to Platinum available!</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        // Setup gallery tab switching
-        function setupGalleryTabs() {
-            const portfolioSection = document.querySelector('#portfolio');
-            if (!portfolioSection) return;
+            <!-- Bundled Services Tracker -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Your Allied Services Bundle</h2>
+                    <span class="bundle-badge">Facility Wellness Pack</span>
+                </div>
+                <div class="bundle-visualization">
+                    <div class="bundle-services">
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">🌳</div>
+                            <h3>Landscaping</h3>
+                            <p>Weekly maintenance</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">🪴</div>
+                            <h3>Indoor Plants</h3>
+                            <p>Biweekly care</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">☕</div>
+                            <h3>Coffee & Water</h3>
+                            <p>Auto-replenish</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">🧴</div>
+                            <h3>Hotel Amenities</h3>
+                            <p>Monthly delivery</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">🧺</div>
+                            <h3>Laundry Service</h3>
+                            <p>Weekly pickup</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">👔</div>
+                            <h3>Garment Rental</h3>
+                            <p>32 uniforms</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                    </div>
+                    <div class="bundle-benefits">
+                        <h3>Your Bundle Benefits</h3>
+                        <ul class="benefits-list">
+                            <li>✓ Single consolidated invoice</li>
+                            <li>✓ Priority scheduling across all services</li>
+                            <li>✓ 15% discount on all services</li>
+                            <li>✓ Dedicated account manager</li>
+                            <li>✓ Quarterly Business Reviews</li>
+                            <li>✓ Free ESG impact reports</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-            const upcomingEventsBtn = portfolioSection.querySelector('.tab-btn[href="upcoming-events.html"]');
-            const galleryBtn = portfolioSection.querySelector('.tab-btn:not([href])');
-            const originalGallery = portfolioSection.querySelector('.portfolio-grid');
-            const eventsGallery = document.getElementById('eventsGalleryGrid');
+            <!-- Gamified Tier Upgrade Incentive -->
+            <section class="section">
+                <div class="upgrade-incentive-card">
+                    <div class="incentive-header">
+                        <h2>Unlock Platinum Tier Benefits</h2>
+                        <span class="upgrade-tag">UPGRADE AVAILABLE</span>
+                    </div>
+                    <div class="incentive-content">
+                        <div class="incentive-left">
+                            <h3>You're Already Using All 6 Services!</h3>
+                            <p>We've noticed your exceptional partnership with Bidvest Living. As a valued client using our complete service portfolio, you qualify for our exclusive Platinum Tier upgrade.</p>
+                            <div class="platinum-benefits">
+                                <h4>Platinum Tier Benefits:</h4>
+                                <div class="benefit-grid">
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">💎</span>
+                                        <span>20% discount (upgrade from 15%)</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🎟️</span>
+                                        <span>VIP event invitations</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🚀</span>
+                                        <span>Priority access to new services</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">📊</span>
+                                        <span>Co-branded case studies</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🤝</span>
+                                        <span>Strategic Partner status</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🎁</span>
+                                        <span>Complimentary service credits quarterly</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="incentive-right">
+                            <div class="savings-calculator">
+                                <h4>Your Potential Savings</h4>
+                                <div class="savings-breakdown">
+                                    <div class="savings-row">
+                                        <span>Current Gold Tier (15%):</span>
+                                        <span class="savings-amount">R1,267/month</span>
+                                    </div>
+                                    <div class="savings-row platinum-highlight">
+                                        <span>Platinum Tier (20%):</span>
+                                        <span class="savings-amount">R1,690/month</span>
+                                    </div>
+                                    <div class="savings-row total">
+                                        <span>Additional Savings:</span>
+                                        <span class="savings-amount">+R423/month</span>
+                                    </div>
+                                    <div class="savings-annual">
+                                        <span>Annual Benefit:</span>
+                                        <span class="savings-amount-large">R5,076</span>
+                                    </div>
+                                </div>
+                                <button class="btn-primary">Request Platinum Upgrade</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            if (galleryBtn && originalGallery) {
-                galleryBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
+            <!-- Available Rewards -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Redeem Your Rewards</h2>
+                    <p class="section-subtitle">You have 2,450 points ($245 value) available</p>
+                </div>
+                <div class="rewards-catalog">
+                    <div class="reward-item">
+                        <div class="reward-item-icon">☕</div>
+                        <h3>Free Coffee Supply</h3>
+                        <p>One month of premium coffee (200 cups)</p>
+                        <div class="reward-cost">500 points</div>
+                        <button class="btn-secondary-sm">Redeem</button>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-item-icon">🌳</div>
+                        <h3>Complimentary Landscaping Visit</h3>
+                        <p>Full landscaping service and maintenance</p>
+                        <div class="reward-cost">800 points</div>
+                        <button class="btn-secondary-sm">Redeem</button>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-item-icon">🪴</div>
+                        <h3>Plant Refresh Package</h3>
+                        <p>Upgrade 5 indoor plants to premium varieties</p>
+                        <div class="reward-cost">600 points</div>
+                        <button class="btn-secondary-sm">Redeem</button>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-item-icon">💰</div>
+                        <h3>Service Credit</h3>
+                        <p>R100 credit towards any service</p>
+                        <div class="reward-cost">1,000 points</div>
+                        <button class="btn-secondary-sm">Redeem</button>
+                    </div>
+                    <div class="reward-item featured">
+                        <div class="reward-item-icon">🎟️</div>
+                        <h3>ESG Workshop Invitation</h3>
+                        <p>Exclusive sustainability networking event</p>
+                        <div class="reward-cost">1,500 points</div>
+                        <button class="btn-primary-sm">Redeem</button>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-item-icon">📊</div>
+                        <h3>Custom Analytics Report</h3>
+                        <p>Deep-dive analysis of your facility operations</p>
+                        <div class="reward-cost">1,200 points</div>
+                        <button class="btn-secondary-sm">Redeem</button>
+                    </div>
+                </div>
+            </section>
 
-                    // Update active states
-                    if (upcomingEventsBtn) upcomingEventsBtn.classList.remove('active');
-                    galleryBtn.classList.add('active');
+            <!-- Earning History -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Recent Rewards Activity</h2>
+                    <button class="btn-secondary">View Full History</button>
+                </div>
+                <div class="rewards-history">
+                    <div class="history-item earned">
+                        <div class="history-icon">+</div>
+                        <div class="history-details">
+                            <h4>Monthly Service Bonus</h4>
+                            <p>October 2025 - All 6 services active</p>
+                        </div>
+                        <div class="history-points">+450 points</div>
+                        <div class="history-date">Oct 1, 2025</div>
+                    </div>
+                    <div class="history-item earned">
+                        <div class="history-icon">+</div>
+                        <div class="history-details">
+                            <h4>Referral Bonus</h4>
+                            <p>Peninsula Resort signed up</p>
+                        </div>
+                        <div class="history-points">+1,000 points</div>
+                        <div class="history-date">Sep 15, 2025</div>
+                    </div>
+                    <div class="history-item redeemed">
+                        <div class="history-icon">-</div>
+                        <div class="history-details">
+                            <h4>Redeemed: Free Coffee Supply</h4>
+                            <p>Premium blend for August</p>
+                        </div>
+                        <div class="history-points">-500 points</div>
+                        <div class="history-date">Aug 5, 2025</div>
+                    </div>
+                    <div class="history-item earned">
+                        <div class="history-icon">+</div>
+                        <div class="history-details">
+                            <h4>Milestone Achievement</h4>
+                            <p>2 year partnership anniversary</p>
+                        </div>
+                        <div class="history-points">+500 points</div>
+                        <div class="history-date">Jul 1, 2025</div>
+                    </div>
+                </div>
+            </section>
 
-                    // Toggle visibility
-                    originalGallery.style.display = 'grid';
-                    if (eventsGallery) eventsGallery.style.display = 'none';
-                });
-            }
+            <!-- Referral Program -->
+            <section class="section">
+                <div class="referral-program-card">
+                    <div class="referral-content">
+                        <h2>Refer a Business & Earn Rewards</h2>
+                        <p>Share the Bidvest Living experience with colleagues and earn 1,000 reward points for each successful referral.</p>
+                        <div class="referral-stats">
+                            <div class="referral-stat">
+                                <div class="referral-stat-value">3</div>
+                                <div class="referral-stat-label">Successful Referrals</div>
+                            </div>
+                            <div class="referral-stat">
+                                <div class="referral-stat-value">3,000</div>
+                                <div class="referral-stat-label">Points Earned</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="referral-action">
+                        <input type="text" class="referral-link" value="https://allied.com/ref/LRG2023" readonly>
+                        <button class="btn-primary">Copy Link</button>
+                        <button class="btn-secondary">Share via Email</button>
+                    </div>
+                </div>
+            </section>
+        </div>
 
-            if (upcomingEventsBtn) {
-                upcomingEventsBtn.addEventListener('click', function(e) {
-                    if (eventsGallery && eventsGallery.innerHTML.trim() !== '') {
-                        e.preventDefault();
+        <!-- Sustainability Page -->
+        <div id="sustainability" class="page">
+            <section class="page-header">
+                <h1>Sustainability Dashboard</h1>
+                <p>Track your environmental impact and ESG metrics</p>
+            </section>
 
-                        // Update active states
-                        upcomingEventsBtn.classList.add('active');
-                        if (galleryBtn) galleryBtn.classList.remove('active');
+            <!-- Impact Summary -->
+            <section class="section">
+                <div class="impact-cards">
+                    <div class="impact-card primary">
+                        <div class="impact-icon">🌍</div>
+                        <div class="impact-data">
+                            <div class="impact-value">-24%</div>
+                            <div class="impact-label">Carbon Footprint Reduction</div>
+                            <div class="impact-detail">vs. previous year baseline</div>
+                        </div>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">💧</div>
+                        <div class="impact-data">
+                            <div class="impact-value">12,450</div>
+                            <div class="impact-label">Gallons Water Saved</div>
+                            <div class="impact-detail">Smart irrigation + recycling</div>
+                        </div>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">♻️</div>
+                        <div class="impact-data">
+                            <div class="impact-value">89%</div>
+                            <div class="impact-label">Waste Diverted</div>
+                            <div class="impact-detail">From landfill to composting</div>
+                        </div>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">⚡</div>
+                        <div class="impact-data">
+                            <div class="impact-value">100%</div>
+                            <div class="impact-label">Renewable Energy</div>
+                            <div class="impact-detail">All services powered by clean energy</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                        // Toggle visibility
-                        originalGallery.style.display = 'none';
-                        if (eventsGallery) eventsGallery.style.display = 'grid';
-                    }
-                });
-            }
-        }
-    </script>
+            <!-- Carbon Tracker -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Monthly Carbon Emissions</h2>
+                    <select class="filter-select">
+                        <option>Last 6 Months</option>
+                        <option>Last Year</option>
+                        <option>All Time</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="carbonChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #10b981;"></span>
+                        <span>Current Year (Optimized Routes)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #94a3b8;"></span>
+                        <span>Previous Year (Baseline)</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sustainability Initiatives -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Active Sustainability Initiatives</h2>
+                </div>
+                <div class="initiatives-grid">
+                    <div class="initiative-card">
+                        <div class="initiative-header">
+                            <span class="initiative-icon">🚛</span>
+                            <h3>Optimized Delivery Routes</h3>
+                        </div>
+                        <div class="initiative-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%"></div>
+                            </div>
+                            <span class="progress-label">92% efficiency gain</span>
+                        </div>
+                        <p class="initiative-impact">Reduced 450 kg CO₂ this month by consolidating service visits</p>
+                    </div>
+
+                    <div class="initiative-card">
+                        <div class="initiative-header">
+                            <span class="initiative-icon">🌱</span>
+                            <h3>Organic Waste Composting</h3>
+                        </div>
+                        <div class="initiative-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 89%"></div>
+                            </div>
+                            <span class="progress-label">89% waste diverted</span>
+                        </div>
+                        <p class="initiative-impact">285 kg of landscape waste converted to nutrient-rich compost</p>
+                    </div>
+
+                    <div class="initiative-card">
+                        <div class="initiative-header">
+                            <span class="initiative-icon">💧</span>
+                            <h3>Smart Water Management</h3>
+                        </div>
+                        <div class="initiative-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 78%"></div>
+                            </div>
+                            <span class="progress-label">78% water reduction</span>
+                        </div>
+                        <p class="initiative-impact">IoT sensors optimize irrigation timing based on soil moisture</p>
+                    </div>
+
+                    <div class="initiative-card">
+                        <div class="initiative-header">
+                            <span class="initiative-icon">🌿</span>
+                            <h3>Native Plant Program</h3>
+                        </div>
+                        <div class="initiative-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <span class="progress-label">65% native species</span>
+                        </div>
+                        <p class="initiative-impact">Reduced maintenance needs and supports local biodiversity</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ESG Report Download -->
+            <section class="section">
+                <div class="report-banner">
+                    <div class="report-content">
+                        <h3>📄 Monthly ESG Report Available</h3>
+                        <p>Comprehensive sustainability metrics ready for your stakeholders and investors</p>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn-secondary">Preview Report</button>
+                        <button class="btn-primary">Download PDF</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sustainability Improvement Opportunities (Client View) -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Our Partnership Sustainability Goals</h2>
+                    <p class="section-subtitle">Together we're driving environmental excellence</p>
+                </div>
+
+                <div class="client-sustainability-goals">
+                    <!-- Water Conservation Together -->
+                    <div class="client-goal-card environmental">
+                        <div class="goal-header">
+                            <div class="goal-icon">💧</div>
+                            <h3>Water Conservation Program</h3>
+                            <span class="goal-impact">Savings: 45,200 L/month</span>
+                        </div>
+                        <p class="goal-description">Our partnership includes use of non-potable water for your landscaping irrigation and facility cleaning, reducing potable water consumption by 78%.</p>
+                        <div class="goal-yourimpact">
+                            <strong>Your Impact:</strong> By participating in this program, you're contributing to regional water conservation efforts and reducing your facility's environmental footprint.
+                        </div>
+                    </div>
+
+                    <!-- Waste Reduction & Recycling -->
+                    <div class="client-goal-card environmental">
+                        <div class="goal-header">
+                            <div class="goal-icon">♻️</div>
+                            <h3>Comprehensive Recycling Initiative</h3>
+                            <span class="goal-impact">Waste Diverted: 850 kg/month</span>
+                        </div>
+                        <p class="goal-description">We recycle all bottles, hangers, and garments from your facility in partnership with local schools for educational and fundraising projects.</p>
+                        <div class="goal-yourimpact">
+                            <strong>Your Impact:</strong> Your participation supports community education programs and diverts significant waste from landfills.
+                        </div>
+                    </div>
+
+                    <!-- Digital Sustainability Platform -->
+                    <div class="client-goal-card operational">
+                        <div class="goal-header">
+                            <div class="goal-icon">📱</div>
+                            <h3>Paperless Operations</h3>
+                            <span class="goal-impact">Paper Saved: 95% reduction</span>
+                        </div>
+                        <p class="goal-description">All your service reports, invoices, and sustainability metrics are delivered digitally through our platform, eliminating paper waste.</p>
+                        <div class="goal-yourimpact">
+                            <strong>Your Impact:</strong> You're part of our initiative that has digitized over 1,240 reports this year.
+                        </div>
+                    </div>
+
+                    <!-- Community Engagement -->
+                    <div class="client-goal-card social">
+                        <div class="goal-header">
+                            <div class="goal-icon">🌱</div>
+                            <h3>Community Partnership Programs</h3>
+                            <span class="goal-impact">Supporting 4 local schools</span>
+                        </div>
+                        <p class="goal-description">Your recycling contributions support agricultural school programs and greenhouse projects that train students in sustainable horticulture.</p>
+                        <div class="goal-yourimpact">
+                            <strong>Your Impact:</strong> Skills development for local youth and promotion of sustainable practices in your community.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Client Participation Opportunities -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Get More Involved</h2>
+                    <p class="section-subtitle">Additional ways to enhance sustainability impact</p>
+                </div>
+
+                <div class="participation-opportunities">
+                    <div class="participation-card">
+                        <div class="participation-icon">🎓</div>
+                        <h3>Sustainability Workshops</h3>
+                        <p>Invite your team to attend our quarterly sustainability workshops on water conservation, energy efficiency, and waste reduction.</p>
+                        <div class="participation-details">
+                            <span class="participation-stat">Next Workshop: Nov 15, 2025</span>
+                            <span class="participation-stat">145 participants this year</span>
+                        </div>
+                        <button class="btn-primary-sm">Register Your Team</button>
+                    </div>
+
+                    <div class="participation-card">
+                        <div class="participation-icon">🏆</div>
+                        <h3>Sustainability Champion Program</h3>
+                        <p>Designate a sustainability champion at your facility to liaise with our Green Team and track progress on joint initiatives.</p>
+                        <div class="participation-details">
+                            <span class="participation-stat">4.7/5 satisfaction rating</span>
+                            <span class="participation-stat">Quarterly recognition</span>
+                        </div>
+                        <button class="btn-primary-sm">Nominate Champion</button>
+                    </div>
+
+                    <div class="participation-card">
+                        <div class="participation-icon">🎁</div>
+                        <h3>Community Fundraising Partnership</h3>
+                        <p>Participate in our school fundraising programs through enhanced recycling collection and donation matching.</p>
+                        <div class="participation-details">
+                            <span class="participation-stat">R3,200 raised this quarter</span>
+                            <span class="participation-stat">4 partner schools</span>
+                        </div>
+                        <button class="btn-primary-sm">Learn More</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sustainability Certifications & Recognition -->
+            <section class="section">
+                <div class="certification-showcase">
+                    <div class="certification-content">
+                        <h2>Working Toward ISO 14001 Certification</h2>
+                        <p>Our partnership contributes to Bidvest Living's pursuit of internationally recognized sustainability certifications. Your facility benefits from our commitment to validated environmental management standards.</p>
+                        <div class="certification-benefits">
+                            <div class="cert-benefit">
+                                <span class="cert-icon">✓</span>
+                                <span>Audited environmental practices</span>
+                            </div>
+                            <div class="cert-benefit">
+                                <span class="cert-icon">✓</span>
+                                <span>Third-party verification of sustainability claims</span>
+                            </div>
+                            <div class="cert-benefit">
+                                <span class="cert-icon">✓</span>
+                                <span>Enhanced credibility for your ESG reporting</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="certification-timeline">
+                        <h3>Certification Roadmap</h3>
+                        <div class="timeline-steps">
+                            <div class="timeline-step completed">
+                                <span class="step-number">1</span>
+                                <span class="step-label">KPI Framework</span>
+                                <span class="step-status">✓ Completed</span>
+                            </div>
+                            <div class="timeline-step in-progress">
+                                <span class="step-number">2</span>
+                                <span class="step-label">Documentation</span>
+                                <span class="step-status">72% Complete</span>
+                            </div>
+                            <div class="timeline-step pending">
+                                <span class="step-number">3</span>
+                                <span class="step-label">External Audit</span>
+                                <span class="step-status">Scheduled: Mar 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Billing Page -->
+        <div id="billing" class="page">
+            <section class="page-header">
+                <h1>Billing & Payments</h1>
+                <p>Manage invoices, payments, and subscription details</p>
+            </section>
+
+            <!-- Billing Summary -->
+            <section class="section">
+                <div class="billing-summary">
+                    <div class="billing-card">
+                        <h3>Current Month</h3>
+                        <div class="billing-amount">R8,450</div>
+                        <div class="billing-detail">October 2025</div>
+                        <div class="billing-savings">Saved R1,492 with Gold Tier (15%)</div>
+                    </div>
+                    <div class="billing-card">
+                        <h3>Next Payment Due</h3>
+                        <div class="billing-amount">R3,200</div>
+                        <div class="billing-detail">Due: October 31, 2025</div>
+                        <button class="btn-primary">Pay Now</button>
+                    </div>
+                    <div class="billing-card">
+                        <h3>Payment Method</h3>
+                        <div class="payment-method">
+                            <span class="card-icon">💳</span>
+                            <span>Visa ending in 4242</span>
+                        </div>
+                        <button class="btn-link">Update Payment</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Invoices -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Recent Invoices</h2>
+                    <button class="btn-secondary">View All</button>
+                </div>
+                <div class="invoice-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Date</th>
+                                <th>Services</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#INV-2025-001</td>
+                                <td>Sep 30, 2025</td>
+                                <td>All Services (6)</td>
+                                <td>R8,225</td>
+                                <td><span class="status-badge status-paid">Paid</span></td>
+                                <td><button class="btn-link">Download</button></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-2025-002</td>
+                                <td>Aug 31, 2025</td>
+                                <td>All Services (6)</td>
+                                <td>R8,100</td>
+                                <td><span class="status-badge status-paid">Paid</span></td>
+                                <td><button class="btn-link">Download</button></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-2025-003</td>
+                                <td>Jul 31, 2025</td>
+                                <td>All Services (6)</td>
+                                <td>R8,350</td>
+                                <td><span class="status-badge status-paid">Paid</span></td>
+                                <td><button class="btn-link">Download</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
